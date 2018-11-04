@@ -12,7 +12,7 @@ describe Trail, type: :model do
 
   describe 'Relationships' do
     it { should have_many :trip_trails}
-    it { should have_many :trails }
+    it { should have_many :trips }
   end
 
 
