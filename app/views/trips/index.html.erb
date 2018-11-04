@@ -1,0 +1,14 @@
+<h1>All Trips!</h1>
+
+
+<div class='collection' >
+
+  <% @trips.each do |trip| %>
+
+    <span class='card'>
+      <%= link_to "#{trip.name}", trip_path(trip) %>
+    </span>
+    
+  <% end %>
+
+</div>

@@ -3,6 +3,7 @@ class TripsController < ApplicationController
 
 
   def index
+    @trips = Trip.all
     # list of all trips
     # title are links to show
   end
