@@ -26,11 +26,15 @@ describe Trip, type: :model do
 
   describe 'Summary' do
 
-    it 'can sum the total distance of all trails on a trip' do
+    it 'total distance of all trails on a trip' do
       total    = @trip.distance
       expected = 1 + 2 + 3 + 4
-
       expect(total).to eq(expected)
+    end
+
+    it 'finds the longest hike' do
+      found    = @trip.longest_hike
+      expect(found).to eq(@trail4)
     end
 
   end

@@ -10,4 +10,12 @@ class Trip < ApplicationRecord
     trails.sum(:length)
   end
 
+  def longest_hike
+    trails.max_by(&:length)
+  end
+
+  def shorted_hike
+
+  end
+
 end
