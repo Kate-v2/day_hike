@@ -9,6 +9,8 @@ class TripsController < ApplicationController
 
 
   def show
+    @trip   = Trip.find(params[:id].to_i)
+    @trails = @trip.trails
     # trails included in that trip
     # name, address, length of each trail
     # trail names link to trail show
