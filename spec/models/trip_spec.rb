@@ -42,6 +42,12 @@ describe Trip, type: :model do
       expect(found).to eq(@trail1)
     end
 
+    it 'finds the average hike distance' do
+      average = ((1 + 2 + 3 + 4) / 4.0)
+      calc    = @trip.average_distance
+      expect(calc).to eq(average)
+    end
+
   end
 
 

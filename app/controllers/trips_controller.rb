@@ -9,8 +9,8 @@ class TripsController < ApplicationController
 
 
   def show
-    # trials included in that trip
-    # name, address, length of each trial
+    # trails included in that trip
+    # name, address, length of each trail
     # trail names link to trail show
     # --- stats ---
     # total distance of trip (all trials)

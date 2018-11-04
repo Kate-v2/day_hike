@@ -18,4 +18,8 @@ class Trip < ApplicationRecord
     trails.min_by(&:length)
   end
 
+  def average_distance
+    trails.average(:length).to_f
+  end
+
 end
