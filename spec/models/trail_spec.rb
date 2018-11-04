@@ -9,4 +9,12 @@ describe Trail, type: :model do
     it { should validate_numericality_of(:length).only_integer }
     it { should validate_numericality_of(:length).is_greater_than(0) }
   end
+
+  describe 'Relationships' do
+    it { should have_many :trip_trails}
+    it { should have_many :trails }
+  end
+
+
+
 end
