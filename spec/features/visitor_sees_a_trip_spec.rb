@@ -28,41 +28,71 @@ describe 'Visitor can see trip details' do
     expect(page).to have_content(@trip.name)
   end
 
-  it 'all trails' do
-    expect(page).to have_content(@trail1.name)
-    expect(page).to have_content(@trail2.name)
-    expect(page).to have_content(@trail3.name)
-    expect(page).to have_content(@trail4.name)
+  describe 'Collection' do
+
+    before(:each) do
+      @collection = page.find('.collection')
+      @cards      = page.all('.card')
+      @card       = @cards.first
+    end
+
+    it 'all trails' do
+      expect(@collection).to have_content(@trail1.name)
+      expect(@collection).to have_content(@trail2.name)
+      expect(@collection).to have_content(@trail3.name)
+      expect(@collection).to have_content(@trail4.name)
+    end
+
+    it 'facts about each trail' do
+      expect(@card).to have_content(@trail1.name)
+      expect(@card).to have_content(@trail1.length)
+      expect(@card).to have_content(@trail1.address)
+    end
+
+    it 'links to trail show page' do
+      @card.click_on("#{@trail1.name}")
+      expect(page).to have_current_path(trail_path(@trail1))
+    end
   end
 
-  it 'facts about each trail' do
-    expect(page).to have_content(@trail1.name)
-    expect(page).to have_content(@trail1.length)
-    expect(page).to have_content(@trail1.address)
+  describe 'stats' do
+
+    before(:each) do
+      @stats = page.find('.stats')
+    end
+
+    it 'total distance' do
+      expect(page).to have_content("Total Distance: #{@trip.distance}")
+    end
+
+    it 'average distance' do
+      expect(page).to have_content("Average Distance: #{@trip.average_distance}")
+    end
+
+    it 'Longest Trail' do
+      expect(page).to have_content("Longest: #{@trip.longest_hike.name} at #{@trip.longest_hike.length}")
+    end
+
+    it 'Shortest Trail' do
+      expect(page).to have_content("Shortest: #{@trip.shortest_hike.name} at #{@trip.shortest_hike.length}")
+    end
+
+    it 'longest & shortest are links to trail show pages' do
+      @stats.click_on("#{@trail1.name}")
+      expect(page).to have_current_path(trail_path(@trail1))
+
+      @stats.click_on("#{@trail4.name}")
+      expect(page).to have_current_path(trail_path(@trail4))
+    end
+
   end
 
-  it 'links to trail show page' do
-    click_on "#{@trail1.name}"
-    expect(page).to have_current_path(trail_path(@trail1))
-  end
-
-  it 'total distance' do
-    expect(page).to have_content("Total Distance: #{@trip.distance}")
-  end
-
-  it 'average distance' do
-    expect(page).to have_content("Average Distance: #{@trip.average_distance}")
-  end
-
-  it 'Longest Trail' do
-    expect(page).to have_content("Longest: #{@trip.longest_hike.name} at #{@trip.longest_hike.length}")
-  end
-
-  it 'Shortest Trail' do
-    expect(page).to have_content("Shortest: #{@trip.shortest_hike.name} at #{@trip.shortest_hike.length}")
-  end
 
 
+end
 
 
+def page_pry
+  save_and_open_page
+  binding.pry
 end

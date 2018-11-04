@@ -1,12 +1,13 @@
 
 
-class TrailController < ApplicationController
+class TrailsController < ApplicationController
 
 
 
 
 
   def show
+    @trail = Trail.find(params[:id].to_i)
     # name
     # address
     # -----
