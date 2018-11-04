@@ -14,8 +14,8 @@ class Trip < ApplicationRecord
     trails.max_by(&:length)
   end
 
-  def shorted_hike
-
+  def shortest_hike
+    trails.min_by(&:length)
   end
 
 end

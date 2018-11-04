@@ -37,6 +37,11 @@ describe Trip, type: :model do
       expect(found).to eq(@trail4)
     end
 
+    it 'finds the shortest hike' do
+      found    = @trip.shortest_hike
+      expect(found).to eq(@trail1)
+    end
+
   end
 
 
