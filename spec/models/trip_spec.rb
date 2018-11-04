@@ -19,9 +19,7 @@ describe Trip, type: :model do
     TripTrail.create!(trip: @trip, trail: @trail2)
     TripTrail.create!(trip: @trip, trail: @trail3)
     TripTrail.create!(trip: @trip, trail: @trail4)
-
   end
-
 
 
   describe 'Summary' do
