@@ -1,0 +1,16 @@
+
+<%= @trail.name %>
+<%= @trail.length %>
+<%= @trail.address %>
+Included in <%= @trail.trip_count %> trips
+
+<div class='container'>
+  <% @trail.trips.each do |trip| %>
+
+    <span class='card'>
+      <%= link_to "#{trip.name}", trip_path(trip) %>
+      distance: <%= trip.distance %>
+    </span>
+
+  <% end %>
+</div>

@@ -1,0 +1,30 @@
+
+<%= @trip.name %>
+
+
+<div class='stats'>
+
+  <span class='stat'>
+    <%= "Total Distance: #{@trip.distance}" %>
+    <%= "Average Distance: #{@trip.average_distance}" %>
+    "Longest: <%=  link_to "#{@trip.longest_hike.name}",  trail_path(@trip.longest_hike)  %> at <%= @trip.longest_hike.length %>
+    "Shortest: <%= link_to "#{@trip.shortest_hike.name}", trail_path(@trip.shortest_hike) %> at <%= @trip.shortest_hike.length %>
+  </span>
+
+</div>
+
+<div class='collection' >
+
+
+  <% @trails.each do |trail| %>
+
+    <span class='card' >
+      <%= link_to "#{trail.name}", trail_path(trail) %>
+      <p><%= trail.length %></p>
+      <p><%= trail.address %></p>
+    </span>
+
+  <% end %>
+
+
+</div>
